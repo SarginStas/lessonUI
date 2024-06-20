@@ -22,3 +22,5 @@ public class AuthPageTest extends BaseTest {
         assertEquals(mainPage.title.getText(), "Products");
     }
 }
+
+
