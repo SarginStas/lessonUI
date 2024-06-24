@@ -28,5 +28,11 @@ public class ARTests extends BaseTest {
         mainPage.shopping_cart_link.shouldBe(visible);
         assertEquals(mainPage.shopping_cart_link.getText(), "1");
 
+        mainPage.burger_menu.click();
+        mainPage.logout.click();
+        authPage.userNameInput.shouldBe(visible);
+        authPage.passwordInput.shouldBe(visible);
+        assertEquals(authPage.login_logo.getText(), "Swag Labs");
+
     }
 }
