@@ -1,6 +1,8 @@
 package com.ui.lesson2;
 
+import com.codeborne.selenide.Selenide;
 import com.ui.BaseTest;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.*;
 import pages.AuthPage;
 import pages.MainPage;
@@ -14,25 +16,27 @@ public class ARTests extends BaseTest {
     MainPage mainPage = new MainPage();
 
     @Test
-    public void adToCart() {
+    public void adToCart() throws InterruptedException {
         authPage.userNameInput.sendKeys("standard_user");
         authPage.passwordInput.sendKeys("secret_sauce");
         authPage.loginButton.click();
+        Thread.sleep(100);
+        Selenide.actions().sendKeys(Keys.ENTER);
 
         mainPage.title.shouldBe(visible);
         assertEquals(mainPage.title.getText(), "Products");
 
-        mainPage.shopping_cart_link.shouldBe(hidden);
+        mainPage.shoppingCartLink.shouldBe(hidden);
 
-        mainPage.add_to_cart_backpack.click();
-        mainPage.shopping_cart_link.shouldBe(visible);
-        assertEquals(mainPage.shopping_cart_link.getText(), "1");
+        mainPage.addToCartBackpack.click();
+        mainPage.shoppingCartLink.shouldBe(visible);
+        assertEquals(mainPage.shoppingCartLink.getText(), "1");
 
-        mainPage.burger_menu.click();
+        mainPage.burgerMenu.click();
         mainPage.logout.click();
         authPage.userNameInput.shouldBe(visible);
         authPage.passwordInput.shouldBe(visible);
-        assertEquals(authPage.login_logo.getText(), "Swag Labs");
+        assertEquals(authPage.loginLogo.getText(), "Swag Labs");
 
     }
 }

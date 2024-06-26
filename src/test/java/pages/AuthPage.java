@@ -8,5 +8,5 @@ public class AuthPage {
     public SelenideElement passwordInput = Selenide.$x("//*[@id='password']");
     public SelenideElement loginButton = Selenide.$x("//*[@id='login-button']");
     public SelenideElement dataTestError = Selenide.$x("//*[@data-test='error']");
-    public SelenideElement login_logo = Selenide.$x("//div[@class='login_logo']");
+    public SelenideElement loginLogo = Selenide.$x("//div[@class='login_logo']");
 }
